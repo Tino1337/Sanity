@@ -1,3 +1,5 @@
+import {stegaClean} from '@sanity/client/stega'
+
 type SlugValue = {
   current?: string
 }
@@ -33,4 +35,10 @@ export function isExternalMenuLink(item: MenuLink) {
 
 export function getDocumentTitle(doc?: {title?: string | null}) {
   return doc?.title ?? ''
+}
+
+/** Strip visual-editing stega chars from strings used in alt, meta, URLs, etc. */
+export function cleanStega(value?: string | null) {
+  if (!value) return undefined
+  return stegaClean(value)
 }

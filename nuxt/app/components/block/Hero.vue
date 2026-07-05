@@ -53,7 +53,7 @@ defineProps<{
 
   &__image {
     aspect-ratio: 2 / 1;
-    border-radius: $medium-radius;
+
   }
 
   &__content {

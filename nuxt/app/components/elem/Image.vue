@@ -13,7 +13,7 @@ defineProps<{
     :asset-id="assetId"
     :w="width ?? 1200"
     :h="height ?? 800"
-    :alt="alt"
+    :alt="cleanStega(alt)"
   />
 </template>
 

@@ -13,7 +13,7 @@ const {data: settings} = await useSanityQuery(SITE_SETTINGS_QUERY, {}, {
         <img
           v-if="settings?.logo?.asset?.url"
           :src="settings.logo.asset.url"
-          :alt="settings?.siteName || 'Site'"
+          :alt="cleanStega(settings?.siteName) || 'Site'"
           class="header__logo"
         >
         <span v-else class="header__site-name">

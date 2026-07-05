@@ -22,7 +22,7 @@ const urlFor = (source: SanityImageSource) =>
     <img
       v-if="post.image"
       :src="urlFor(post.image)?.width(550).height(310).url()"
-      :alt="post.title"
+      :alt="cleanStega(post.title)"
       class="post__image"
       width="550"
       height="310"
