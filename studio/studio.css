@@ -1,0 +1,9 @@
+/* Always use tab navigation for field groups (Content / Design, etc.).
+   Sanity defaults to a select dropdown in narrow containers like page-builder block modals. */
+[data-testid='field-group-root'] [data-ui='TabList'] {
+  display: flex !important;
+}
+
+[data-testid='field-group-root'] [data-ui='Select'] {
+  display: none !important;
+}

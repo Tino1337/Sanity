@@ -8,7 +8,15 @@ defineProps<{
 </script>
 
 <template>
-  <main v-if="page" class="flex flex-col gap-8">
+  <main v-if="page" class="page">
     <SanityPageBuilder :blocks="page.pageBuilder" />
   </main>
 </template>
+
+<style lang="scss" scoped>
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+}
+</style>

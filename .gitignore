@@ -47,3 +47,6 @@ coverage/
 # Misc local files
 *.pem
 *.local
+
+# pnpm store (if created locally)
+.pnpm-store/

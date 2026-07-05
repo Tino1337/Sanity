@@ -1,0 +1,138 @@
+@mixin mquery($width, $ratio: false) {
+  @if $ratio {
+    @media only screen and (max-width: $width) and (min--moz-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and (-webkit-min-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and (min-device-pixel-ratio: $ratio) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin minquery($width, $ratio: false) {
+  @if $ratio {
+    @media only screen and (min-width: $width) and (min--moz-device-pixel-ratio: $ratio),
+      only screen and (min-width: $width) and (-webkit-min-device-pixel-ratio: $ratio),
+      only screen and (min-width: $width) and (min-device-pixel-ratio: $ratio) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+// breakpoints — max-width (to / or less)
+$screen-lg: 1279px;
+$screen-md: 959px;
+$screen-sm: 599px;
+
+// breakpoints — min-width (from / or more)
+$screen-xl: 1280px;
+$screen-l: 960px;
+$screen-m: 600px;
+
+// radius
+$tiny-radius: 8px;
+$small-radius: 12px;
+$medium-radius: 24px;
+$large-radius: 32px;
+$huge-radius: 64px;
+
+// icon sizes
+$icon-size-small: 16px;
+$icon-size-medium: 24px;
+$icon-size-large: 40px;
+$icon-size-xlarge: 55px;
+
+// colors
+$color-text: #111827;
+$color-text-muted: #6b7280;
+$color-border: #e5e7eb;
+$color-bg: #fff;
+$color-link: #111827;
+
+// spacing
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-12: 3rem;
+$space-16: 4rem;
+
+// typography
+$font-sans: 'Public Sans', system-ui, sans-serif;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height-tight: 1.2;
+
+// layout
+$container-max: 48rem;
+
+// design tokens (used by parts/)
+$white: #fff;
+$gray: #9ca3af;
+$light-gray: #f3f4f6;
+$red: #dc2626;
+$green: #00a155;
+$cyan-bg: #ecfeff;
+
+$text-color: #111827;
+$inverted-text-color: #fff;
+$primary-color: $green;
+
+$light-blue: #dbeafe;
+$dark-blue: #1e40af;
+$light-purple: #ede9fe;
+$dark-purple: #5b21b6;
+$light-green: #d9fbe8;
+$dark-green: #007f45;
+$light-orange: #ffedd5;
+$dark-orange: #c2410c;
+
+$heading-font-family: 'Work Sans', system-ui, sans-serif;
+$font-sans: $heading-font-family;
+
+$weight-light: 300;
+$weight-book: 400;
+$weight-regular: 400;
+$weight-semi-bold: 600;
+$weight-bold: 700;
+$weight-heavy: 800;
+
+$font-size-tiny: 0.75rem;
+$font-size-smaller: 0.8125rem;
+$font-size-small: 0.875rem;
+$font-size: 1rem;
+$font-size-big: 1.125rem;
+
+$line-height: 1.5;
+$small-line-height: 1.35;
+$smaller-line-height: 1.2;
+
+$h1-size-mobile: 2.5rem;
+$h1-size: 4rem;
+$h2-size-mobile: 2rem;
+$h2-size: 3rem;
+$h3-size-mobile: 1.5rem;
+$h3-size: 2rem;
+$h4-size-mobile: 1.25rem;
+$h4-size: 1.5rem;
+$h5-size-mobile: 1.125rem;
+$h6-size-mobile: 1rem;
+
+$soft-duration: 0.3s;
+$soft-timing-function: ease;
+$transition-soft: $soft-duration $soft-timing-function;
+$transition-quick: 0.15s ease;

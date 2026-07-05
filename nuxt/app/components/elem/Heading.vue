@@ -15,7 +15,15 @@ const tag = computed(() => {
 </script>
 
 <template>
-  <component :is="tag">
+  <component :is="tag" class="heading">
     <slot />
   </component>
 </template>
+
+<style lang="scss" scoped>
+.heading {
+  margin: 0;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+</style>

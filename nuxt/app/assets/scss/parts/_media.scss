@@ -1,0 +1,13 @@
+.bg-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.image {
+    &.is-21by9 {
+        padding-top: 42.86%;
+    }
+    &.is-21by6 {
+        padding-top: 28.57%;
+    }
+}

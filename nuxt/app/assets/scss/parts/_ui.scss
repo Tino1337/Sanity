@@ -1,0 +1,614 @@
+@use '../variables' as *;
+@use 'mixins' as *;
+
+p {
+  font-size: $font-size;
+  @include minquery($screen-l) {
+    font-size: $font-size-big;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+    @include minquery($screen-m) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+b,
+strong,
+.is-heavy {
+  font-weight: $weight-semi-bold;
+  color: $green !important;
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    font-weight: $weight-heavy;
+    color: $green !important;
+  }
+}
+.is-book {
+  font-weight: $weight-book;
+}
+
+.small-text {
+  font-size: $font-size-smaller;
+  line-height: $smaller-line-height;
+  @include minquery($screen-l) {
+    font-size: $font-size-small;
+  }
+}
+.large-p {
+  p,
+  ul {
+    @extend .h3;
+  }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a,
+.is-link {
+  &:not(.is-wrapper, .is-button) {
+    text-decoration: underline;
+    color: $text-color;
+    transition: color $transition-soft;
+    &:active,
+    &:hover,
+    &:focus {
+      color: $primary-color;
+    }
+  }
+  &.is-wrapper {
+    color: currentColor;
+  }
+}
+
+.cta {
+  &.is-button {
+    line-height: $smaller-line-height;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background-color: transparent;
+    text-decoration: none;
+    box-shadow: none;
+    text-align: left;
+    font-family: $heading-font-family !important;
+    font-weight: $weight-semi-bold;
+
+    box-sizing: border-box;
+    transition-duration: $soft-duration;
+    transition-timing-function: $soft-timing-function;
+    transition-property: color, background-color, box-shadow, transform;
+    position: relative;
+
+    &:not([class*="has-text-"]) {
+      color: $text-color;
+    }
+
+    // Button text styling
+    .button-text {
+      position: relative;
+      display: inline-block;
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
+
+    &.is-secondary {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &.is-tertiary {
+      background-color: $text-color;
+      border-color: $text-color;
+      color: $inverted-text-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        box-shadow: none;
+        transform: none;
+        background-color: transparent;
+        color: $text-color;
+      }
+    }
+
+    // Button color styles
+    &.is-blue {
+      background-color: $light-blue;
+      border-color: $light-blue;
+      color: $dark-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $light-blue;
+        border-color: $light-blue;
+        color: $dark-blue;
+      }
+    }
+
+    &.is-purple {
+      background-color: $light-purple;
+      border-color: $light-purple;
+      color: $dark-purple;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $light-purple;
+        border-color: $light-purple;
+        color: $dark-purple;
+      }
+    }
+
+    &.is-green {
+      background-color: $light-green;
+      border-color: $light-green;
+      color: $dark-green;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $light-green;
+        border-color: $light-green;
+        color: $dark-green;
+      }
+    }
+
+    &.is-light-orange {
+      background-color: $light-orange;
+      border-color: $light-orange;
+      color: $dark-orange;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $light-orange;
+        border-color: $light-orange;
+        color: $dark-orange;
+      }
+    }
+
+    &.is-white {
+      background-color: $white;
+      border-color: $white;
+      color: $text-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $white;
+        border-color: $white;
+        color: $text-color;
+      }
+    }
+
+    &.is-dark {
+      background-color: $text-color;
+      border-color: $text-color;
+      color: $white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $text-color;
+        border-color: $text-color;
+        color: $white;
+      }
+    }
+
+    &.no-title {
+      &:not(.nav-prev) {
+        > svg {
+          margin-left: 2.75rem;
+        }
+      }
+    }
+
+    > svg {
+      width: 2rem;
+      margin-left: 0.75rem;
+    }
+  }
+
+  // Button color styles for .button class combination
+  // Two separate elements: arrow circle + text pill
+  &.button {
+    font-family: $heading-font-family !important;
+    text-decoration: none !important;
+    transition-duration: $soft-duration;
+    transition-timing-function: $soft-timing-function;
+    transition-property: color, box-shadow, transform;
+    position: relative;
+    overflow: visible;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: $white;
+
+    .button-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid $green;
+      background-color: $green;
+      transition:
+        background-color $soft-duration $soft-timing-function,
+        border-color $soft-duration $soft-timing-function,
+        color $soft-duration $soft-timing-function;
+    }
+
+    .button-text {
+      text-decoration: none !important;
+      font-weight: $weight-regular;
+      font-size: $font-size;
+      flex-shrink: 0;
+    }
+
+    // Real arrow elements - width transition pushes button text smoothly
+    $arrow-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M7 17L17 7M17 7h-6M17 7v6'/%3E%3C/svg%3E");
+    $ease-shrink: cubic-bezier(0.55, 0, 0.1, 1);
+    $ease-pop: cubic-bezier(0.34, 1.35, 0.64, 1);
+    $arrow-size: 2.5rem;
+
+    .button-arrow {
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $arrow-size;
+      width: $arrow-size;
+      transition: width 0.42s $ease-shrink;
+
+      &::before {
+        content: "";
+        width: $arrow-size;
+        height: $arrow-size;
+        min-width: $arrow-size;
+        border-radius: 50%;
+        background-color: $green;
+        border: 1px solid $green;
+        background-image: $arrow-svg;
+        background-size: 1rem 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(1);
+        opacity: 1;
+        transition:
+          transform 0.42s $ease-shrink,
+          opacity 0.28s ease,
+          background-color $soft-duration $soft-timing-function,
+          border-color $soft-duration $soft-timing-function;
+      }
+    }
+
+    .button-arrow-left {
+      &::before {
+        transition:
+          transform 0.42s $ease-shrink,
+          opacity 0.28s ease,
+          background-color $soft-duration $soft-timing-function,
+          border-color $soft-duration $soft-timing-function;
+      }
+    }
+
+    .button-arrow-right {
+      width: 0;
+      overflow: hidden;
+
+      &::before {
+        transform: scale(0);
+        opacity: 0;
+        transition:
+          transform 0.42s $ease-pop 0.42s,
+          opacity 0.18s ease 0.42s,
+          background-color $soft-duration $soft-timing-function,
+          border-color $soft-duration $soft-timing-function;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      border-color: transparent;
+      color: $white;
+
+      .button-label {
+        background-color: $green;
+        border-color: $green;
+      }
+
+      .button-arrow-left {
+        width: 0;
+        overflow: hidden;
+
+        &::before {
+          transform: scale(0);
+          opacity: 0;
+          background-color: $green;
+          border-color: $green;
+        }
+      }
+
+      .button-arrow-right {
+        width: $arrow-size;
+
+        &::before {
+          transform: scale(1);
+          opacity: 1;
+          transition-delay: 0s;
+          background-color: $green;
+          border-color: $green;
+        }
+      }
+    }
+
+    // Reverse animation on leave
+    &:not(:hover):not(:focus):not(:active) {
+      .button-arrow-left {
+        transition: width 0.42s $ease-pop 0.38s;
+
+        &::before {
+          transition:
+            transform 0.42s $ease-pop 0.38s,
+            opacity 0.24s ease 0.34s;
+        }
+      }
+
+      .button-arrow-right {
+        transition: width 0.38s $ease-shrink 0s;
+
+        &::before {
+          transition:
+            transform 0.38s $ease-shrink 0s,
+            opacity 0.16s ease 0s;
+        }
+      }
+    }
+
+    &.is-blue {
+      .button-label,
+      .button-arrow::before {
+        background-color: $light-blue;
+        border-color: $light-blue;
+      }
+      color: $dark-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $light-blue;
+          border-color: $light-blue;
+        }
+        color: $dark-blue;
+      }
+    }
+
+    &.is-purple {
+      .button-label,
+      .button-arrow::before {
+        background-color: $light-purple;
+        border-color: $light-purple;
+      }
+      color: $dark-purple;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $light-purple;
+          border-color: $light-purple;
+        }
+        color: $dark-purple;
+      }
+    }
+
+    &.is-green {
+      .button-label,
+      .button-arrow::before {
+        background-color: $dark-green;
+        border-color: $dark-green;
+      }
+      color: $light-purple;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $dark-green;
+          border-color: $dark-green;
+        }
+        color: $light-purple;
+      }
+    }
+
+    &.is-light-orange {
+      .button-label,
+      .button-arrow::before {
+        background-color: $light-orange;
+        border-color: $light-orange;
+      }
+      color: $dark-orange;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $light-orange;
+          border-color: $light-orange;
+        }
+        color: $dark-orange;
+      }
+    }
+
+    &.is-white {
+      .button-label,
+      .button-arrow::before {
+        background-color: $white;
+        border-color: $white;
+      }
+      color: $text-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $white;
+          border-color: $white;
+        }
+        color: $text-color;
+      }
+    }
+
+    &.is-dark {
+      .button-label,
+      .button-arrow::before {
+        background-color: $text-color;
+        border-color: $text-color;
+      }
+      color: $white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        .button-label,
+        .button-arrow::before {
+          background-color: $text-color;
+          border-color: $text-color;
+        }
+        color: $white;
+      }
+    }
+  }
+
+  &.is-disabled {
+    &.is-primary,
+    &.is-secondary,
+    &.is-tertiary {
+      pointer-events: none;
+      filter: opacity(0.5);
+    }
+  }
+}
+
+pre {
+  background-color: black;
+  color: lime;
+}
+
+.card {
+  background-color: $cyan-bg;
+  box-shadow: none;
+  border: none;
+  color: $text-color;
+  overflow: hidden;
+  border-radius: $large-radius;
+  padding: 2rem;
+  @include minquery($screen-l) {
+    border-radius: $huge-radius;
+    padding: 4rem;
+  }
+}
+
+.teaser-tile {
+  background-color: $light-gray;
+  border-radius: $large-radius;
+  padding: 2rem;
+  &.is-fullheight {
+    height: 100%;
+  }
+  @include minquery($screen-l) {
+    padding: 3rem;
+  }
+}
+
+.has-line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+ul {
+  list-style: disc;
+  margin-left: 1.2em;
+}
+
+ol {
+  margin-left: 1.2em;
+  > li {
+    > p:not(:last-child) {
+      margin-bottom: 0rem;
+    }
+  }
+}
+
+.is-block-headline {
+  font-weight: $weight-heavy;
+  @extend .h2;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+    @include minquery($screen-l) {
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+.content-loader {
+  @include loader;
+  width: 4rem;
+  height: 4rem;
+  border: 3px solid $text-color;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  margin: auto;
+}
+
+.meta-headline {
+  position: relative;
+  padding-left: 1em;
+  font-size: $font-size-small;
+
+  @include minquery($screen-m) {
+    font-size: $font-size;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background: $green;
+    border-radius: 50%;
+
+    @include minquery($screen-m) {
+      width: 7px;
+      height: 7px;
+    }
+  }
+  margin-bottom: 1rem;
+}

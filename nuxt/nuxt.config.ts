@@ -2,7 +2,20 @@
 import {getStudioUrl} from './env.config'
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxtjs/sanity'],
+  modules: ['@nuxt/eslint', '@nuxtjs/sanity'],
+
+  components: [
+    {path: '~/components'},
+    {
+      path: '~/sanity',
+      prefix: 'Sanity',
+      pathPrefix: false,
+    },
+  ],
+
+  imports: {
+    dirs: ['helpers'],
+  },
 
   sanity: {
     projectId: process.env.SANITY_PROJECT_ID,
@@ -26,7 +39,17 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/scss/main.scss'],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/variables" as *;',
+        },
+      },
+    },
+  },
 
   compatibilityDate: '2025-01-15',
 

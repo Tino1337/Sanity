@@ -1,0 +1,28 @@
+@use '../variables' as *;
+
+@mixin form-item {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.25rem 0.5rem 0.5rem;
+  border: 1px solid $text-color;
+  border-radius: $tiny-radius;
+  background-color: $white;
+  color: $text-color;
+  font-size: $font-size;
+  font-family: inherit;
+  line-height: $line-height;
+  appearance: none;
+}
+
+@mixin loader {
+  display: inline-block;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

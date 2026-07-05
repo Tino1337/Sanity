@@ -5,6 +5,7 @@ import {visionTool} from '@sanity/vision'
 import {getPreviewOrigin} from './env.config'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure/index'
+import './studio.css'
 
 export default defineConfig({
   name: 'default',

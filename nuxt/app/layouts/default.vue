@@ -1,9 +1,21 @@
 <template>
-  <div class="flex min-h-screen flex-col">
+  <div class="layout">
     <NavHeader />
-    <div class="flex-1">
+    <main class="layout__main">
       <slot />
-    </div>
+    </main>
     <NavFooter />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+  }
+}
+</style>

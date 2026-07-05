@@ -11,20 +11,32 @@ defineProps<{
 
 <template>
   <LayoutSection>
-    <LayoutContainer class="flex flex-col gap-4">
-      <p v-if="blockdata?.eyebrow" class="text-sm uppercase tracking-wide text-muted">
+    <LayoutContainer class="rich-text">
+      <p v-if="blockdata?.eyebrow" class="eyebrow">
         {{ blockdata.eyebrow }}
       </p>
       <ElemHeading
         v-if="blockdata?.headline"
         :level="blockdata.headlineLevel"
-        class="text-3xl font-bold"
+        class="rich-text__headline"
       >
         {{ blockdata.headline }}
       </ElemHeading>
-      <div v-if="blockdata?.body" class="prose max-w-none">
+      <div v-if="blockdata?.body" class="prose">
         <SanityContent :value="blockdata.body" />
       </div>
     </LayoutContainer>
   </LayoutSection>
 </template>
+
+<style lang="scss" scoped>
+.rich-text {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__headline {
+    font-size: $font-size-3xl;
+  }
+}
+</style>

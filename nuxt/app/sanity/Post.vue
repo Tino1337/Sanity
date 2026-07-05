@@ -18,23 +18,50 @@ const urlFor = (source: SanityImageSource) =>
 </script>
 
 <template>
-  <main v-if="post" class="flex flex-col gap-4">
+  <main v-if="post" class="post">
     <img
       v-if="post.image"
       :src="urlFor(post.image)?.width(550).height(310).url()"
       :alt="post.title"
-      class="aspect-video rounded-xl"
+      class="post__image"
       width="550"
       height="310"
     >
-    <h1 v-if="post.title" class="text-4xl font-bold">
+    <h1 v-if="post.title" class="post__title">
       {{ post.title }}
     </h1>
-    <div class="prose max-w-none">
-      <p v-if="post.publishedAt">
+    <div class="prose">
+      <p v-if="post.publishedAt" class="post__date">
         Published: {{ formatDate(post.publishedAt) }}
       </p>
       <SanityContent v-if="post.body" :value="post.body" />
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-radius: $small-radius;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+  }
+
+  &__date {
+    margin: 0 0 $space-4;
+    color: $color-text-muted;
+  }
+}
+</style>

@@ -20,7 +20,7 @@ function resolveBlockComponent(type: string) {
 </script>
 
 <template>
-  <div v-if="blocks?.length" class="flex flex-col gap-16">
+  <div v-if="blocks?.length" class="page-builder">
     <component
       :is="resolveBlockComponent(block._type)"
       v-for="block in blocks"
@@ -29,3 +29,11 @@ function resolveBlockComponent(type: string) {
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.page-builder {
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+</style>

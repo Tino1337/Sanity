@@ -6,7 +6,6 @@
     "dev:studio": "npm run dev --prefix studio",
     "dev:nuxt": "npm run dev --prefix nuxt",
     "build": "npm run build --prefix studio && npm run build --prefix nuxt",
-    "deploy:studio": "npm run deploy --prefix studio",
-    "migrate": "npm run migrate --prefix studio"
+    "deploy:studio": "npm run deploy --prefix studio"
   }
 }

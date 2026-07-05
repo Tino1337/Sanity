@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {DocumentIcon} from '@sanity/icons'
+import {hiddenAllFieldsGroup} from '../shared/field-groups'
 
 export const page = defineType({
   name: 'page',
@@ -9,6 +10,7 @@ export const page = defineType({
   groups: [
     {name: 'content', title: 'Content', default: true},
     {name: 'seo', title: 'SEO'},
+    hiddenAllFieldsGroup,
   ],
   fields: [
     defineField({

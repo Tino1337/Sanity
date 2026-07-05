@@ -1,0 +1,273 @@
+@use '../variables' as *;
+@use 'mixins' as *;
+
+.field {
+    position: relative;
+    &:hover {
+        &:not(.is-disabled) {
+            .control {
+                .switch {
+                    &:not(:checked) {
+                        & + label {
+                            &::after {
+                                background-color: $primary-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.is-disabled {
+        .label {
+            color: $gray;
+        }
+        .control {
+            .input,
+            .textarea,
+            .select select,
+            div.select::after {
+                color: $gray;
+                border-color: $gray;
+                background-color: $light-gray;
+            }
+            .checkbox {
+                cursor: not-allowed;
+                color: $gray;
+                * {
+                    color: $gray;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+    &.is-invalid {
+        .control {
+            .input,
+            .textarea,
+            .select select,
+            .radio input[type="radio"],
+            .checkbox input[type="checkbox"],
+            .file .file-label .file-cta {
+                border-color: $red;
+            }
+        }
+    }
+    &.is-filled {
+        .label {
+            top: 3px;
+            font-size: $font-size-tiny;
+        }
+    }
+    .label {
+        color: $text-color;
+        font-weight: $weight-book;
+        font-size: $font-size;
+        position: absolute;
+        left: 0.5rem;
+        top: 1.25rem;
+        margin: 0;
+        z-index: 1;
+        transition: top $transition-quick;
+        cursor: text;
+    }
+    .control {
+        .outer-label {
+            margin-bottom: 0.25rem;
+        }
+        .input,
+        .textarea {
+            @include form-item;
+        }
+        .icon {
+            color: $text-color;
+        }
+        .select {
+            width: 100%;
+            height: unset;
+            &::after {
+                border-color: $text-color;
+                border-width: 1px;
+                border-radius: 0;
+            }
+            select {
+                @include form-item;
+                width: 100%;
+                padding-right: 2.5rem;
+            }
+        }
+        .radios {
+            display: flex;
+            flex-direction: column;
+            @include minquery($screen-l) {
+                flex-direction: row;
+            }
+            .radio {
+                width: fit-content;
+                margin-left: 0;
+                &:not(:first-child) {
+                    @include minquery($screen-l) {
+                        margin-left: 0.5rem;
+                    }
+                }
+                &:not(:last-child) {
+                    margin-bottom: 0.25rem;
+                    @include minquery($screen-l) {
+                        margin-bottom: 0rem;
+                    }
+                }
+            }
+        }
+        .radio,
+        .checkbox {
+            display: inline-flex;
+            align-items: center;
+            font-weight: $weight-book;
+            font-size: $font-size-big;
+            &.is-disabled {
+                color: $gray;
+                cursor: not-allowed;
+            }
+            input[type="radio"],
+            input[type="checkbox"] {
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: transparent;
+                margin: 0;
+                margin-right: 0.5rem;
+                color: currentColor;
+                width: 1.5rem;
+                height: 1.5rem;
+                border: 1px solid currentColor;
+                border-radius: 50%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 1rem;
+                    height: 1rem;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    background-color: $text-color;
+                }
+                &:checked {
+                    &::before {
+                        transform: scale(1);
+                    }
+                }
+            }
+            input[type="checkbox"] {
+                border-radius: $tiny-radius;
+                flex-shrink: 0;
+                &::before {
+                    border-radius: calc(#{$tiny-radius} - 3px);
+                }
+            }
+        }
+        .switch {
+            &:checked {
+                & + label {
+                    &::before {
+                        background-color: $primary-color;
+                    }
+                    &::after {
+                        background-color: $white;
+                    }
+                }
+            }
+            & + label {
+                height: auto;
+                line-height: $line-height;
+                padding-top: 0;
+                &::before {
+                    background-color: $white;
+                    border: 1px solid $text-color;
+                    outline: none;
+                }
+                &::after {
+                    background-color: $text-color;
+                    outline: none;
+                    transition: left $transition-quick;
+                }
+            }
+        }
+        .datepicker {
+            @include form-item;
+            height: 2.5rem;
+            width: 100%;
+            min-width: 9.5rem;
+            position: relative;
+            // hide default icon
+            &::-webkit-inner-spin-button,
+            &::-webkit-calendar-picker-indicator {
+                opacity: 0;
+                -webkit-appearance: none;
+            }
+            // on firefox, dont show calendar icon because default cant be hidden
+            @-moz-document url-prefix() {
+                min-width: 0;
+                & ~ .icon.is-right {
+                    display: none;
+                }
+            }
+        }
+        .file {
+            .file-label {
+                .file-cta {
+                    @include form-item;
+                    font-weight: $weight-book;
+                    white-space: normal;
+                    .file-icon {
+                        height: auto;
+                        width: auto;
+                    }
+                }
+            }
+            & + .overview {
+                margin-top: 0.25rem;
+                .overview-file {
+                    display: flex;
+                    align-items: center;
+                    .file-text {
+                        font-weight: $weight-heavy;
+                        margin-right: 0.5rem;
+                    }
+                    .file-icon {
+                        cursor: pointer;
+                        transition: color $transition-quick;
+                        &:hover {
+                            color: $red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.module-form {
+    .form-row {
+        > .col {
+            .errors {
+                position: absolute;
+                bottom: 5px;
+                left: 0.75rem;
+                .error-message {
+                    margin-bottom: 0;
+                    color: $red;
+                    font-size: $font-size-tiny;
+                }
+            }
+            .outer-errors {
+                & + .errors {
+                    position: relative;
+                    bottom: 0;
+                    margin-top: 0.25rem;
+                }
+            }
+        }
+    }
+}

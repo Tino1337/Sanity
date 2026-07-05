@@ -1,0 +1,112 @@
+@use '../variables' as *;
+
+.h1,
+h1,
+:has(.h1):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h1-size-mobile;
+  line-height: $smaller-line-height;
+  font-style: normal;
+  font-weight: $weight-book;
+  margin-top: 0;
+  @include minquery($screen-l) {
+    font-size: $h1-size;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+    @include minquery($screen-l) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.h2,
+h2,
+:has(.h2):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h2-size-mobile;
+  line-height: $smaller-line-height;
+  font-style: normal;
+  font-weight: $weight-regular;
+  margin-top: 0;
+  @include minquery($screen-l) {
+    font-size: $h2-size;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+    @include minquery($screen-l) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.h3,
+h3,
+:has(.h3):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h3-size-mobile;
+  line-height: $small-line-height;
+  font-style: normal;
+  font-weight: $weight-regular;
+  margin-top: 0;
+  @include minquery($screen-l) {
+    font-size: $h3-size;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+    @include minquery($screen-l) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.h4,
+h4,
+:has(.h4):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h4-size-mobile;
+  line-height: $small-line-height;
+  font-style: normal;
+  font-weight: $weight-regular;
+  margin-top: 0;
+  @include minquery($screen-l) {
+    font-size: $h4-size;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+    @include minquery($screen-l) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.h5,
+h5,
+:has(.h5):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h5-size-mobile;
+  line-height: $line-height;
+  font-style: normal;
+  font-weight: $weight-regular;
+  margin-top: 0;
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.h6,
+h6,
+:has(.h6):is(h1, h2, h3, h4, h5, h6) {
+  font-size: $h6-size-mobile;
+  line-height: $line-height;
+  font-style: normal;
+  font-weight: $weight-regular;
+  margin-top: 0;
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  hyphens: auto;
+}

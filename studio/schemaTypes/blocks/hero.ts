@@ -1,6 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {BlockElementIcon} from '@sanity/icons'
 import {defaultBlockSettings} from '../shared/default-block-settings'
+import {hiddenAllFieldsGroup} from '../shared/field-groups'
 import {headlineFields} from '../shared/headline-fields'
 
 export const hero = defineType({
@@ -11,6 +12,7 @@ export const hero = defineType({
   groups: [
     {name: 'content', title: 'Content', default: true},
     {name: 'design', title: 'Design'},
+    hiddenAllFieldsGroup,
   ],
   fields: [
     ...headlineFields({group: 'content'}),

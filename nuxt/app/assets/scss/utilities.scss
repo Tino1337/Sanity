@@ -1,0 +1,81 @@
+@use 'variables' as *;
+
+.prose {
+  max-width: none;
+  color: $color-text;
+
+  p,
+  ul,
+  ol,
+  blockquote {
+    margin: 0 0 $space-4;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin: $space-6 0 $space-3;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+  }
+
+  h2 {
+    font-size: $font-size-3xl;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+  }
+
+  ul,
+  ol {
+    padding-left: $space-6;
+  }
+
+  a {
+    color: $color-link;
+    text-decoration: underline;
+  }
+
+  strong {
+    font-weight: $font-weight-bold;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: $font-size-sm;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.heading {
+  margin: 0;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+
+  &--lg {
+    font-size: $font-size-4xl;
+    letter-spacing: -0.02em;
+  }
+
+  &--md {
+    font-size: $font-size-3xl;
+  }
+}
+
+.text-muted {
+  margin: 0;
+  color: $color-text-muted;
+}
+
+.text-lead {
+  margin: 0;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+}
+
+.text-preline {
+  white-space: pre-line;
+}
