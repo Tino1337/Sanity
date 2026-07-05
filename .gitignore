@@ -22,17 +22,17 @@ logs/
 npm-debug.log*
 pnpm-debug.log*
 
-# Nuxt (nuxt-testing-sanity)
-nuxt-testing-sanity/.output/
-nuxt-testing-sanity/.data/
-nuxt-testing-sanity/.nuxt/
-nuxt-testing-sanity/.nitro/
-nuxt-testing-sanity/.cache/
-nuxt-testing-sanity/dist/
+# Nuxt
+nuxt/.output/
+nuxt/.data/
+nuxt/.nuxt/
+nuxt/.nitro/
+nuxt/.cache/
+nuxt/dist/
 
-# Sanity Studio (studio-testing-sanity)
-studio-testing-sanity/dist/
-studio-testing-sanity/.sanity/
+# Sanity Studio
+studio/dist/
+studio/.sanity/
 
 # TypeScript
 *.tsbuildinfo

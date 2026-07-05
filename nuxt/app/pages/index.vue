@@ -1,26 +1,23 @@
 <script setup lang="ts">
-const HOME_PAGE_QUERY = groq`*[_type == "page" && slug.current == "home"][0]{
-  title,
-  content[]{
-    _key,
-    _type,
-    ...
-  }
-}`;
+import {HOME_SLUG, PAGE_QUERY} from '~/queries/page'
 
-const { data: page } = await useSanityQuery<HOME_PAGE_QUERY_RESULT>(HOME_PAGE_QUERY);
+const {data: page} = await useSanityQuery(PAGE_QUERY, {slug: HOME_SLUG}, {
+  key: 'page-home',
+})
+
+if (!page.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: `No home page found. Create a page with slug "${HOME_SLUG}" in Sanity Studio.`,
+  })
+}
+
+useSeoMeta({
+  title: page.value.seo?.metaTitle || page.value.title,
+  description: page.value.seo?.metaDescription,
+})
 </script>
 
 <template>
-  <main
-    v-if="page"
-    class="container mx-auto max-w-3xl p-8 flex flex-col gap-8"
-  >
-    <PageBuilder :blocks="page.content" />
-  </main>
-  <main v-else class="container mx-auto max-w-3xl p-8">
-    <p class="text-muted">
-      No home page found. Create a page with slug <strong>home</strong> in Sanity Studio.
-    </p>
-  </main>
+  <SanityPage :page="page" />
 </template>

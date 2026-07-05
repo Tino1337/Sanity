@@ -2,17 +2,9 @@ import {defineConfig} from 'sanity'
 import {presentationTool} from 'sanity/presentation'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {getPreviewOrigin} from './env.config'
 import {schemaTypes} from './schemaTypes'
-import {structure} from './structure'
-
-const isDev = process.env.NODE_ENV !== 'production'
-
-// Presentation preview: local Nuxt in dev, Vercel in production (sanity deploy)
-const previewOrigin = (
-  isDev
-    ? process.env.SANITY_STUDIO_PREVIEW_ORIGIN_DEV ?? 'http://localhost:3000'
-    : process.env.SANITY_STUDIO_PREVIEW_ORIGIN ?? 'https://sanity-dun-seven.vercel.app'
-).replace(/\/$/, '')
+import {structure} from './structure/index'
 
 export default defineConfig({
   name: 'default',
@@ -24,7 +16,7 @@ export default defineConfig({
   plugins: [
     presentationTool({
       previewUrl: {
-        origin: previewOrigin,
+        origin: getPreviewOrigin(),
         preview: '/',
         previewMode: {
           enable: '/preview/enable',
@@ -38,5 +30,5 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-  
+
 })
