@@ -17,23 +17,13 @@ defineProps<{
 <template>
   <LayoutSection>
     <LayoutContainer class="hero">
-      <ElemImage
-        v-if="blockdata?.image?.asset?._ref"
-        :asset-id="blockdata.image.asset._ref"
-        :alt="blockdata.headline"
-        class="hero__image"
-        :width="1200"
-        :height="600"
-      />
+      <ElemImage v-if="blockdata?.image?.asset?._ref" :asset-id="blockdata.image.asset._ref" :alt="blockdata.headline"
+        class="hero__image" :width="1200" :height="600" />
       <div class="hero__content">
         <p v-if="blockdata?.eyebrow" class="eyebrow">
           {{ blockdata.eyebrow }}
         </p>
-        <ElemHeading
-          v-if="blockdata?.headline"
-          :level="blockdata.headlineLevel"
-          class="hero__headline"
-        >
+        <ElemHeading v-if="blockdata?.headline" :level="blockdata.headlineLevel" class="hero__headline">
           {{ blockdata.headline }}
         </ElemHeading>
         <p v-if="blockdata?.text" class="hero__text">
